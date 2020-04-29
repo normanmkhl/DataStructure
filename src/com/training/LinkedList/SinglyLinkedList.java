@@ -1,5 +1,7 @@
 package com.training.LinkedList;
 
+import java.util.NoSuchElementException;
+
 public class SinglyLinkedList {
     Node head;
 
@@ -202,6 +204,21 @@ public class SinglyLinkedList {
             return;
         }
         temp.next = n.next;
+   }
+   public boolean detectLoop(){
+        if(head == null){
+            throw new NoSuchElementException();
+        }
+        Node fastPtr = head;
+        Node slowPtr = head;
+        while(fastPtr != null && fastPtr.next != null){
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+            if(fastPtr == slowPtr){
+                return true;
+            }
+        }
+        return false;
    }
     public static void main(String[] args){
         SinglyLinkedList list = new SinglyLinkedList();

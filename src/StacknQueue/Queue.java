@@ -25,8 +25,7 @@ public class Queue {
         if(isEmpty()){
             front = node;
         }else{
-            node.next = front;
-            front = node;
+            rear.next = node;
         }
         rear = node;
         length++;
@@ -49,6 +48,7 @@ public class Queue {
         Node n = front;
         while(n != null){
             System.out.println(n.data);
+            n = n.next;
         }
     }
     public static void main(String[] args){
@@ -59,9 +59,8 @@ public class Queue {
         list.enqueue(1);
         list.enqueue(4);
 
+        list.show();
 
-        list.peek();
 
-        list.dequeue();
     }
 }

@@ -1,7 +1,5 @@
 package BinaryTree;
 
-import com.sun.source.tree.Tree;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -119,15 +117,19 @@ public class BinaryTree {
     // ALL FUNCTION FOR BINARY SEARCH TREE ( BST )
 
 
+    public void binarySearchTreeInsert(int value){
+        root = binarySearchTreeInsert(root, value);
+    }
+
     public TreeNode binarySearchTreeInsert(TreeNode root, int value){
         if(root == null){
             root = new TreeNode(value);
             return root;
         }
         if(value < root.data){
-            root.left = binarySearchTreeInsert(root.left, value);
+            root.left = binarySearchTreeInsert(root.left,value);
         }else{
-            root.right = binarySearchTreeInsert(root.left, value);
+            root.right = binarySearchTreeInsert(root.right,value);
         }
         return root;
     }
@@ -145,20 +147,113 @@ public class BinaryTree {
         BSTInOrder(root.right);
     }
 
+    public void BSTPostOrder(){
+        BSTPostOrder(root);
+    }
+
+    public void BSTPostOrder(TreeNode root){
+        if(root == null){
+            return;
+        }
+        BSTPostOrder(root.left);
+        BSTPostOrder(root.right);
+        System.out.println(root.data);
+    }
+
+    public TreeNode SearchBST(int key){
+        return SearchBST(root,key);
+    }
+
     public TreeNode SearchBST(TreeNode root,int key){
-        if(root.data == key || root == null){
+        if(root == null || root.data == key){
             return root;
-        }else if(key < root.data){
+        }
+        if(key < root.data){
             return SearchBST(root.left,key);
         }else{
             return SearchBST(root.right,key);
         }
     }
+    public void BSTsmallest(){
+        BSTsmallest(root);
+    }
+
+    public void BSTsmallest(TreeNode root){
+        if(root == null){
+            return;
+        }
+        if(root.left == null){
+            System.out.println(root.data);
+        }
+        BSTsmallest(root.left);
+    }
+
+    public void BSTbiggest(){
+        BSTbiggest(root);
+    }
+
+    public void BSTbiggest(TreeNode root){
+        if(root == null){
+            return;
+        }
+        if(root.right == null){
+            System.out.println(root.data);
+        }
+        BSTbiggest(root.right);
+    }
 
     public static void main(String[] args){
         BinaryTree bt = new BinaryTree();
-        bt.createBinaryTree();
-        bt.iterInOrder();
+        bt.binarySearchTreeInsert(10);
+        bt.binarySearchTreeInsert(5);
+        bt.binarySearchTreeInsert(20);
+        bt.binarySearchTreeInsert(2);
+        bt.binarySearchTreeInsert(6);
+        bt.binarySearchTreeInsert(19);
+        bt.binarySearchTreeInsert(25);
+        bt.binarySearchTreeInsert(21);
+
+        System.out.println("Result of Binary Search Tree : " );
+
+        bt.BSTInOrder();
+
+        System.out.println("----------------------");
+
+        System.out.println("Traversal in Post Order : ");
+
+        bt.BSTPostOrder();
+
+        System.out.println("--------------------------");
+
+        System.out.println("Find node of : 19 and 55 ");
+
+        if(null != bt.SearchBST(19)){
+            System.out.println("Key found for 19");
+        }else{
+            System.out.println("Not found for 19");
+        }
+
+        if(null != bt.SearchBST(55)){
+            System.out.println("Key found for 55");
+        }else{
+            System.out.println("Not found for 55");
+        }
+
+        System.out.println("------------------------");
+
+        //System.out.println("Add new node of 56");
+        bt.binarySearchTreeInsert(56);
+
+        System.out.println("--------------------");
+
+        System.out.println("Find the smallest node");
+        bt.BSTsmallest();
+
+        System.out.println("-----------------------");
+        System.out.println("Find the biggest node");
+
+        bt.BSTbiggest();
+
 
     }
 }
