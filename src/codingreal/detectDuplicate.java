@@ -19,23 +19,15 @@ public class detectDuplicate {
             this.right = right;
         }
     }
-    public static String insertStar(String s){
-        if(s == null || s == "" || s.length() == 1){
-            return s;
+    public static String computeBinary(int val){
+        StringBuilder sb = new StringBuilder();
+        int reversed = 0;
+        while(val > 1){
+            int remainder = val % 2;
+            reversed = reversed * 10 + remainder;
+            val /= 2;
         }
-        int count = 1;
-        for(int i = 0; i < s.length();i++){
-            for(int j = i+1; j < s.length();j++){
-                if(s.charAt(i) == s.charAt(j)) {
-                    s = s.charAt(i) + "*";
-                }
-                while(count != 0){
-                    s = s + s.charAt(j);
-                    count--;
-                }
-            }
-        }
-        return s;
+        return sb.append(reversed).toString();
     }
     public static void main(String[] args){
         detectDuplicate tree = new detectDuplicate();
