@@ -74,7 +74,7 @@ public class undirectedGraph {
             }
         }
     }
-    public static void main(String[] args){
+    public static void main(String[] args) {
         undirectedGraph g = new undirectedGraph(4); //4 x 4 matrices
         g.addEdges(0,1);
         g.addEdges(1,2);
