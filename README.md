@@ -1,3 +1,3 @@
 # DataStructure
 
-Data Structure Assignment Solution in University
+Data structure assignment solution in university
