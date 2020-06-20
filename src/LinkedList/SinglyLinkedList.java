@@ -1,4 +1,4 @@
-package com.training.LinkedList;
+package LinkedList;
 
 import java.util.NoSuchElementException;
 
