@@ -1,5 +1,5 @@
 /**
- * @author Norman M.Mikhail <normanmkhl@mail.ugm.ac.id>
+ * @author Norman Mikhail
  */
 package AVLTree;
 
