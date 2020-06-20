@@ -10,7 +10,7 @@ public class undirectedGraph {
     int[][] adjacentMatrix;
     LinkedList<Integer>[] adj;
 
-    public undirectedGraph(int quantity){
+    public undirectedGraph(int quantity) {
         this.v = quantity;
         this.e = 0;
         this.adjacentMatrix = new int [quantity][quantity];
@@ -19,17 +19,17 @@ public class undirectedGraph {
             this.adj[i] = new LinkedList<>();
         }
     }
-    public void addEdges(int u, int v){
+    public void addEdges(int u, int v) {
         this.adj[u].add(v);
         this.adj[v].add(u);
         this.e++;
     }
-    public void addNodes(int r, int c){
+    public void addNodes(int r, int c) {
         this.adjacentMatrix[r][c] = 1;
         this.adjacentMatrix[c][r] = 1;
         this.e++;
     }
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(v + " vertices, " + e + " edges\n");
         for(int i = 0; i < v; i++){
@@ -41,7 +41,7 @@ public class undirectedGraph {
         }
         return sb.toString();
     }
-    public void bfs(int s){
+    public void bfs(int s) {
         boolean[] visited = new boolean[s];
         Queue<Integer> q = new LinkedList<>();
         visited[s] = true;
@@ -57,7 +57,7 @@ public class undirectedGraph {
             }
         }
     }
-   public void dfs(int s){
+   public void dfs(int s) {
         boolean[] visited = new boolean[s];
         Stack<Integer> stack = new Stack<>();
         stack.push(s);
